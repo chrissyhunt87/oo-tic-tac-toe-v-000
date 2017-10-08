@@ -95,7 +95,7 @@ class TicTacToe
   end
 
   def over?
-    if won?(@board) || full?(@board) || draw?(@board)
+    if won? || full? || draw?
       return true
     else
       return false
@@ -103,8 +103,8 @@ class TicTacToe
   end
 
   def winner
-    if won?(@board)
-      return @board[won?(@board)[0]]
+    if won?
+      return @board[won?[0]]
     else
       return nil
     end
