@@ -51,4 +51,33 @@ class TicTacToe
     end
   end
 
+  def turn_count(@board)
+    turns = 0
+    @board.each do | space |
+      if space == "X" || space == "O"
+        turns += 1
+      end
+    end
+    return turns
+  end
+
+  def current_player(@board)
+    if turn_count(@board) % 2 == 0
+      return "X"
+    else
+      return "O"
+    end
+  end
+
+  def won?(@board)
+    win = false
+    WIN_COMBINATIONS.each do | win_combo |
+      if (@board[win_combo[0]] == "X" && @board[win_combo[1]] == "X" && @board[win_combo[2]] == "X") ||
+        (@board[win_combo[0]] == "O" && @board[win_combo[1]] == "O" && @board[win_combo[2]] == "O")
+        win = win_combo
+      end
+    end
+    return win
+  end
+
 end
