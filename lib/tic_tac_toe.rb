@@ -80,4 +80,34 @@ class TicTacToe
     return win
   end
 
+  def full?(@board)
+    @board.none? do | space |
+      space == " " || space == "" || space == nil
+    end
+  end
+
+  def draw?(@board)
+    if !won?(@board) && full?(board)
+      return true
+    else
+      return false
+    end
+  end
+
+  def over?(@board)
+    if won?(@board) || full?(@board) || draw?(@board)
+      return true
+    else
+      return false
+    end
+  end
+
+  def winner(@board)
+    if won?(@board)
+      return @board[won?(@board)[0]]
+    else
+      return nil
+    end
+  end
+
 end
